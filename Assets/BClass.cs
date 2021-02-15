@@ -7,22 +7,28 @@ public class BClass : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        InstallEventReceiver();
     }
 
     public void InstallEventReceiver()
     {
-        EventManager.applicationEventDispatcher.AddListener<TestEvent>(ReceiveEventMethod);
+        EventManager.applicationEventDispatcher.AddListener<EventTypeA>(ReceiveEventTypeAMethod);
+        Debug.Log("BClass InstallEventReceiver");
     }
 
-    void ReceiveEventMethod(TestEvent @event)
+    void ReceiveEventTypeAMethod(EventTypeA @event)
     {
-        
+        if(@event.evenType == EventManager.TEST_A_DISPATCHER)
+        {
+            Debug.Log("B Class _ Receive A EVENT");
+        }
+        else if(@event.evenType == EventManager.TEST_B_DISPATCHER)
+        {
+            Debug.Log("B Class _ Receive B EVENT");
+        }
+        else if(@event.evenType == EventManager.TEST_C_DISPATCHER)
+        {
+            Debug.Log("B Class _ Receive C EVENT");
+        }
     }
 }

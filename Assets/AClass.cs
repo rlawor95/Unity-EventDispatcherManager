@@ -14,7 +14,7 @@ public class AClass : MonoBehaviour
 
     public void AClassEventMethod()
     {
-        var @event = new TestEvent(EventManager.TEST_DISPATCHER);
+        var @event = new TestEvent(EventManager.TEST_B_DISPATCHER);
         EventManager.applicationEventDispatcher.Dispatch(@event);
     }
 }

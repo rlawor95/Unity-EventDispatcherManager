@@ -7,7 +7,9 @@ using System.ComponentModel;
 public static class EventManager
 {
     /// <summary>
-    public const int TEST_DISPATCHER = 0x00000001;
+    public const int TEST_A_DISPATCHER = 0x00000001;
+    public const int TEST_B_DISPATCHER = 0x0000000f;
+    public const int TEST_C_DISPATCHER = 0x00000003;
 
     public static ApplicationEventDispatcher applicationEventDispatcher = null;
     public static void Init()
@@ -17,13 +19,33 @@ public static class EventManager
 }
 
 
-class TestEvent : IApplicationEvent
+class EventTypeA : IApplicationEvent
 {
-    private readonly int eventType;
+    private readonly int _eventType;
 
-    public TestEvent(int _eventType)
+    public EventTypeA(int _eventType)
     {
-        eventType = _eventType;
+        this._eventType = _eventType;
+    }
+
+    public int evenType
+    {
+        get { return _eventType; }
+    }
+}
+
+class EventTypeB : IApplicationEvent
+{
+    private readonly int _eventType;
+
+    public EventTypeB(int _eventType)
+    {
+        this._eventType = _eventType;
+    }
+
+    public int evenType
+    {
+        get { return _eventType; }
     }
 }
 
